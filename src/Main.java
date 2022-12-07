@@ -29,10 +29,13 @@ public class Main {
             if(primett.equals(BigInteger.TWO)){
                 prime = prime.add(BigInteger.ONE);
                 primes++;
+                System.out.println("2 IS PRIME");
+                continue;
             }
 
             if(isPrime(primett)){
                 primes++;
+                System.out.println(primett + " is the " + primes + (n%10 <= 3 ? (n%10 == 3 ? "rd":(n%10 == 2? "nd" : "st")) : "th") + " PRIME");
                 if(primes == n){
                     return prime;
                 }
@@ -63,7 +66,7 @@ public class Main {
             if(input.contains("exit")){
                 break;
             }
-            int n = 0;
+            int n;
             try{
                 n = Integer.parseInt(input);
             }catch (Exception e){
@@ -74,8 +77,11 @@ public class Main {
                 System.out.println("NOT A VALID INT.");
                 continue;
             }
+            long startNs = System.nanoTime();
+            BigInteger nthprime = nthPrime(n);
+            long endNS = System.nanoTime()-startNs;
 
-            System.out.println(n + (n <= 3 ? (n == 3 ? "rd":(n == 2? "nd" : "st")) : "th") + " prime: " + nthPrime(n));
+            System.out.println(n + (n <= 3 ? (n == 3 ? "rd":(n == 2? "nd" : "st")) : "th") + " prime: " + nthprime + " and took " + endNS + " nanos");
 
 
         }
